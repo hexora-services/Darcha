@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#114b3d" />
+  <meta name="description" content="დარჩა — სამშენებლო და სარემონტო სამუშაოებიდან დარჩენილი ახალი და მეორადი მასალების ყიდვა-გაყიდვა საქართველოში. განათავსე განცხადება უფასოდ." />
+  <meta property="og:title" content="დარჩა — მასალას მეორე შანსი აქვს" />
+  <meta property="og:description" content="იყიდე და გაყიდე რემონტის შემდეგ დარჩენილი მასალები საქართველოში. განცხადების დამატება უფასოა." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>დარჩა — დარჩენილი სამშენებლო მასალების ბაზარი</title>
+</head>
+<body>
+  <div class="notice-strip"><span class="notice-dot"></span> მასალას მეორე შანსი აქვს <span class="strip-mark">♻</span> დაზოგე ფული • შეამცირე ნარჩენი</div>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="დარჩა — მთავარი"><span class="brand-symbol">↗</span><span>დარჩა<span class="brand-period">.</span></span></a>
+      <nav class="top-nav" aria-label="ნავიგაცია">
+        <a href="#listings">განცხადებები</a>
+        <a href="#how">როგორ მუშაობს</a>
+      </nav>
+      <div class="header-actions">
+        <label class="lang-select" for="languageSelect"><span class="sr-only">Language / ენა / Язык</span><select id="languageSelect" aria-label="Language / ენა / Язык"><option value="ka">🇬🇪 ქარ</option><option value="en">🇬🇧 EN</option><option value="ru">🇷🇺 RU</option></select></label>
+        <button type="button" class="nav-link" id="myListingsBtn">ჩემი განცხადებები</button>
+        <button type="button" class="btn btn-primary btn-header" data-open-post><span class="plus">＋</span> <span>განცხადების დამატება</span></button>
+        <button type="button" class="menu-button" id="menuBtn" aria-label="მენიუს გახსნა" aria-expanded="false">☰</button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="#listings">განცხადებები</a><a href="#how">როგორ მუშაობს</a>
+      <button type="button" id="mobileMyBtn">ჩემი განცხადებები</button>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="green-line"></span> ახალი სივრცე ძველი და დარჩენილი მასალებისთვის</div>
+          <h1>რემონტი დასრულდა.<br><em>მასალა დარჩა?</em></h1>
+          <p class="hero-subtitle">ნუ გადააგდებ იმას, რაც სხვას სჭირდება. გაყიდე ან იპოვე კაფელი, ბლოკი, მილები, ხე, გათბობის ნაწილები და სხვა მასალები კარგ ფასად.</p>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-accent btn-lg" data-open-post>＋ განათავსე უფასოდ <span>↗</span></button>
+            <a href="#listings" class="btn btn-outline btn-lg">დაათვალიერე მასალები <span>↓</span></a>
+          </div>
+          <div class="hero-points"><span>✓ უფასო განცხადებები</span><span>✓ პირდაპირი კავშირი</span><span>✓ მთელი საქართველო</span></div>
+        </div>
+        <div class="hero-visual" aria-label="სამშენებლო მასალების ილუსტრაცია">
+          <div class="visual-grid"></div>
+          <div class="illustration-label label-top">♻ ნაკლები ნარჩენი</div>
+          <div class="graphic-board">
+            <div class="board-heading"><span class="tiny-diamond"></span> დარჩენილი მასალა ≠ ნაგავი</div>
+            <div class="graphic-scene">
+              <div class="tile-stack"><span></span><span></span><span></span><span></span></div>
+              <div class="brick-stack"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="pipe-rolls"><i></i><i></i><i></i></div>
+            </div>
+            <div class="board-footer"><span>გამოიყენე ხელახლა</span><span class="round-arrow">↗</span></div>
+          </div>
+          <div class="illustration-label label-bottom"><b>ახალი იდეა</b> ძველი მასალებისთვის ✦</div>
+        </div>
+      </div>
+    </section>
+    <section class="categories-section container" id="categories">
+      <div class="section-heading"><div><div class="section-kicker">მარტივად იპოვე</div><h2>რა მასალას ეძებ?</h2></div><a href="#listings" class="text-link">ყველა განცხადება <span>↗</span></a></div>
+      <div class="category-grid" id="categoriesGrid"></div>
+    </section>
+    <section class="browse-section" id="listings">
+      <div class="container">
+        <div class="section-heading"><div><div class="section-kicker">შეიძინე უკეთეს ფასად</div><h2>განცხადებები <span class="listing-count" id="listingCount">0</span></h2></div><span class="updated-note">განახლებადი კატალოგი</span></div>
+        <div id="demoNotice" class="demo-notice" role="status"><span>ⓘ</span><div><b>სადემონსტრაციო ვერსია</b> — ქვემოთ მოცემული საწყისი განცხადებები გამოგონილია. შენ მიერ დამატებული განცხადებები ამ მოწყობილობაზე შეინახება. საჯაროდ გამოსაქვეყნებლად საჭიროა Firebase-ის დაკავშირება.</div><button type="button" id="dismissDemo" aria-label="შეტყობინების დახურვა">×</button></div>
+        <div class="search-shell">
+          <form id="searchForm" class="search-row" role="search">
+            <label class="search-field"><span class="search-icon">⌕</span><input type="search" id="searchInput" placeholder="რას ეძებ? მაგ.: კაფელი, რადიატორი..." aria-label="მასალის ძებნა" autocomplete="off"/></label>
+            <button type="submit" class="btn btn-primary btn-search">ძებნა ↗</button>
+          </form>
+          <div class="filters-row">
+            <label class="filter-wrap"><span>კატეგორია</span><select id="categoryFilter" aria-label="კატეგორია"><option value="all">ყველა კატეგორია</option></select></label>
+            <label class="filter-wrap"><span>მდებარეობა</span><select id="cityFilter" aria-label="მდებარეობა"><option value="all">მთელი საქართველო</option></select></label>
+            <label class="filter-wrap"><span>მდგომარეობა</span><select id="conditionFilter" aria-label="მდგომარეობა"><option value="all">ყველა მდგომარეობა</option><option value="new">ახალი / გამოუყენებელი</option><option value="used">მეორადი</option></select></label>
+            <label class="filter-wrap"><span>დალაგება</span><select id="sortFilter" aria-label="დალაგება"><option value="newest">უახლესი</option><option value="price-asc">იაფიდან ძვირისკენ</option><option value="price-desc">ძვირიდან იაფისკენ</option></select></label>
+          </div>
+        </div>
+        <div class="results-top"><span id="resultsLabel">მასალები</span><button class="clear-filters" id="clearFilters" type="button">ფილტრების გასუფთავება ↻</button></div>
+        <div class="cards-grid" id="listingsGrid" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState" hidden><div class="empty-icon">⌕</div><h3>განცხადება ვერ მოიძებნა</h3><p>შეცვალე ფილტრები ან დაამატე საკუთარი განცხადება.</p><button type="button" class="btn btn-primary" id="emptyReset">ყველას ნახვა</button></div>
+        <div class="load-more-row"><button type="button" class="btn btn-outline" id="loadMore" hidden>მეტის ჩვენება ↓</button></div>
+      </div>
+    </section>
+    <section class="how-section container" id="how"><div class="section-heading"><div><div class="section-kicker">მხოლოდ 3 ნაბიჯი</div><h2>როგორ მუშაობს?</h2></div></div>
+      <div class="steps-grid"><div class="step-card"><div class="step-number">01</div><div class="step-emoji">📸</div><h3>გადაუღე ფოტო</h3><p>განათავსე დარჩენილი ან მეორადი მასალა, მიუთითე რაოდენობა, ფასი და მდებარეობა.</p></div><div class="step-card"><div class="step-number">02</div><div class="step-emoji">🔎</div><h3>იპოვე მყიდველი</h3><p>დაინტერესებული ადამიანი მარტივად იპოვის შენს განცხადებას ფილტრებით.</p></div><div class="step-card"><div class="step-number">03</div><div class="step-emoji">🤝</div><h3>შეთანხმდით პირდაპირ</h3><p>მყიდველი გამყიდველს უკავშირდება ტელეფონით. გადახდას და მიწოდებას თავად ათანხმებთ.</p></div></div>
+    </section>
+    <section class="cta-section"><div class="container cta-inner"><div><div class="cta-eyebrow">ნუ დატოვებ უსარგებლოდ</div><h2>შენს დარჩენილ მასალას<br>ვიღაც უკვე ეძებს.</h2><p>ერთი განცხადება შეიძლება სხვისთვის დიდი დაზოგვა იყოს.</p></div><button type="button" class="btn btn-accent btn-lg" data-open-post>＋ დაამატე განცხადება ↗</button></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-main"><div><a href="#top" class="brand brand-footer"><span class="brand-symbol">↗</span><span>დარჩა<span class="brand-period">.</span></span></a><p>მეორე შანსი მასალებისთვის.<br>პირველი ეტაპი — მთელი საქართველო.</p></div><div class="footer-links"><a href="#listings">განცხადებები</a><a href="#how">როგორ მუშაობს</a><button type="button" data-open-post>განცხადების დამატება</button><button type="button" data-open-info="privacy">კონფიდენციალურობა</button><button type="button" data-open-info="terms">წესები</button></div></div><div class="container footer-bottom"><span>© <span id="year"></span> დარჩა · ყველა უფლება დაცულია</span><span>გააზრებული მოხმარება ♻</span></div></footer>
+  <button type="button" class="floating-post" data-open-post aria-label="განცხადების დამატება">＋ <span>განცხადება</span></button>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="postDialog" class="dialog modal-form" aria-labelledby="postDialogTitle"><div class="dialog-heading"><div><div class="section-kicker">გაყიდე მარტივად</div><h2 id="postDialogTitle">ახალი განცხადება</h2></div><button class="icon-button" data-close-dialog aria-label="დახურვა">×</button></div>
+    <form id="postForm" class="post-form">
+      <div class="form-field"><label for="postTitle">განცხადების სათაური <b>*</b></label><input type="text" id="postTitle" name="title" maxlength="90" minlength="5" required placeholder="მაგ.: ახალი კაფელი 12 მ²" /></div>
+      <div class="form-grid"><div class="form-field"><label for="postCategory">კატეგორია <b>*</b></label><select id="postCategory" name="category" required><option value="">აირჩიე</option></select></div><div class="form-field"><label for="postCondition">მდგომარეობა <b>*</b></label><select id="postCondition" name="condition" required><option value="new">ახალი / გამოუყენებელი</option><option value="used">მეორადი</option></select></div></div>
+      <div class="form-grid"><div class="form-field"><label for="postPrice">ფასი (₾) <b>*</b></label><input type="number" id="postPrice" name="price" min="0" max="1000000" step="0.01" placeholder="მაგ.: 120" required /></div><div class="form-field"><label for="postAmount">რაოდენობა <b>*</b></label><input type="text" id="postAmount" name="amount" maxlength="70" placeholder="მაგ.: 12 მ², 20 ცალი" required /></div></div>
+      <div class="form-grid"><div class="form-field"><label for="postCity">ქალაქი / რეგიონი <b>*</b></label><select id="postCity" name="city" required><option value="">აირჩიე</option></select></div><div class="form-field"><label for="postPhone">ტელეფონი <b>*</b></label><input type="tel" id="postPhone" name="phone" placeholder="5XX XX XX XX" maxlength="22" required inputmode="tel" /></div></div>
+      <div class="form-field"><label for="postDesc">აღწერა <b>*</b></label><textarea id="postDesc" name="description" rows="4" minlength="10" maxlength="1400" placeholder="მასალის ზომა, ხარისხი, დარჩენილი რაოდენობა, გატანის პირობები..." required></textarea></div>
+      <div class="form-field"><label for="postImages">ფოტოები (მაქს. 4)</label><div class="upload-panel"><input type="file" id="postImages" accept="image/jpeg,image/png,image/webp" multiple /><div class="upload-hint"><span>⬆</span><b>აირჩიე ფოტოები</b><small>JPG, PNG ან WEBP · თითოეული მაქს. 5 MB</small></div></div><div class="upload-previews" id="uploadPreviews"></div></div>
+      <label class="consent-label"><input type="checkbox" id="postConsent" required /><span>ვეთანხმები საიტის <button type="button" class="inline-link" data-open-info="terms">წესებს</button> და მესმის, რომ ჩემი ტელეფონის ნომერი განცხადებაში საჯაროდ გამოჩნდება.</span></label>
+      <div class="form-actions"><button type="button" class="btn btn-outline" data-close-dialog>გაუქმება</button><button type="submit" id="submitPostBtn" class="btn btn-primary">განცხადების გამოქვეყნება ↗</button></div>
+      <p class="form-footnote" id="postFormHelp">დემო რეჟიმში განცხადება მხოლოდ ამ ბრაუზერში გამოჩნდება.</p>
+    </form>
+  </dialog>
+
+  <dialog id="detailDialog" class="dialog detail-dialog" aria-labelledby="detailTitle"><div class="detail-header"><div class="section-kicker">მასალის დეტალები</div><button class="icon-button" data-close-dialog aria-label="დახურვა">×</button></div><div id="detailContent"></div></dialog>
+
+  <dialog id="authDialog" class="dialog auth-dialog" aria-labelledby="authTitle"><div class="dialog-heading"><div><div class="section-kicker">მომხმარებლის სივრცე</div><h2 id="authTitle">შესვლა / რეგისტრაცია</h2></div><button class="icon-button" data-close-dialog aria-label="დახურვა">×</button></div><p>განცხადების საჯაროდ დამატებისთვის საჭიროა ანგარიშზე შესვლა.</p><button type="button" class="btn btn-google" id="googleLoginBtn"><span class="google-g">G</span> Google-ით გაგრძელება</button><div class="auth-divider">ან</div><form id="authForm"><div class="form-field"><label for="authEmail">ელფოსტა</label><input id="authEmail" type="email" required autocomplete="email" /></div><div class="form-field"><label for="authPassword">პაროლი (მინ. 6 სიმბოლო)</label><input id="authPassword" type="password" minlength="6" required autocomplete="current-password" /></div><div class="auth-buttons"><button class="btn btn-primary" type="submit" data-auth-action="login">შესვლა</button><button class="btn btn-outline" type="button" id="registerBtn">რეგისტრაცია</button></div></form><p id="authError" class="error-text" role="alert"></p></dialog>
+
+  <dialog id="myDialog" class="dialog my-dialog" aria-labelledby="myTitle"><div class="dialog-heading"><div><div class="section-kicker">მართე შენი მასალები</div><h2 id="myTitle">ჩემი განცხადებები</h2></div><button class="icon-button" data-close-dialog aria-label="დახურვა">×</button></div><div id="accountInfo" class="account-info"></div><div id="myListingContent"></div></dialog>
+
+  <dialog id="infoDialog" class="dialog info-dialog" aria-labelledby="infoTitle"><div class="dialog-heading"><h2 id="infoTitle"></h2><button class="icon-button" data-close-dialog aria-label="დახურვა">×</button></div><div id="infoContent"></div></dialog>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

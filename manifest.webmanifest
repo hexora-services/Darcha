@@ -1,0 +1,12 @@
+{
+  "name": "დარჩა — სამშენებლო მასალების ბაზარი",
+  "short_name": "დარჩა",
+  "description": "შეიძინე და გაყიდე დარჩენილი ან მეორადი სამშენებლო მასალები",
+  "lang": "ka",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f7f3",
+  "theme_color": "#114b3d",
+  "icons": [{"src":"assets/icon.svg", "sizes":"any", "type":"image/svg+xml", "purpose":"any maskable"}]
+}
