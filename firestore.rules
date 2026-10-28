@@ -2,10 +2,28 @@ rules_version = '2';
 service cloud.firestore {
  match /databases/{database}/documents {
   match /listings/{listingId} {
+   // Anyone can browse. Only the owner can create, update status, or delete.
    allow read: if true;
+   function validUrl(url) {
+     return url is string && url.size() <= 400 &&
+       url.matches('https://res[.]cloudinary[.]com/[a-zA-Z0-9_-]+/image/upload/.*');
+   }
+   function validPath(path) {
+     return path is string && path.size() <= 200 &&
+       path.matches('darcha/' + request.auth.uid + '/[a-zA-Z0-9_/-]+');
+   }
+   function validPhotos(d) {
+     return d.images is list && d.paths is list && d.images.size() <= 4 &&
+       d.paths.size() == d.images.size() &&
+       (d.images.size() < 1 || (validUrl(d.images[0]) && validPath(d.paths[0]))) &&
+       (d.images.size() < 2 || (validUrl(d.images[1]) && validPath(d.paths[1]))) &&
+       (d.images.size() < 3 || (validUrl(d.images[2]) && validPath(d.paths[2]))) &&
+       (d.images.size() < 4 || (validUrl(d.images[3]) && validPath(d.paths[3])));
+   }
    function validListing() {
     let d=request.resource.data;
-    return d.keys().hasOnly(['title','category','condition','price','amount','city','phone','description','images','paths','ownerUid','ownerName','createdAt','status'])
+    return request.auth != null
+      && d.keys().hasOnly(['title','category','condition','price','amount','city','phone','description','images','paths','ownerUid','ownerName','createdAt','status'])
       && d.keys().hasAll(['title','category','condition','price','amount','city','phone','description','images','paths','ownerUid','ownerName','createdAt','status'])
       && d.title is string && d.title.size() >= 5 && d.title.size() <= 90
       && d.category in ['tile','block','pipes','heating','wood','cement','metal','insulation','paint','doors','electrical','other']
@@ -15,14 +33,13 @@ service cloud.firestore {
       && d.city in ['თბილისი','რუსთავი','მცხეთა','ქუთაისი','ბათუმი','გორი','ზუგდიდი','ფოთი','თელავი','ახალციხე','მარნეული','სხვა ქალაქი']
       && d.phone is string && d.phone.size() >= 9 && d.phone.size() <= 22
       && d.description is string && d.description.size() >= 10 && d.description.size() <= 1400
-      && d.images is list && d.images.size() <= 4
-      && d.paths is list && d.paths.size() == d.images.size()
+      && validPhotos(d)
       && d.ownerUid == request.auth.uid
       && d.ownerName is string && d.ownerName.size() <= 100
       && d.status in ['active','sold'];
    }
-   allow create: if request.auth != null && validListing() && request.resource.data.createdAt == request.time && request.resource.data.status == 'active';
-   allow update: if request.auth != null && resource.data.ownerUid == request.auth.uid && validListing()
+   allow create: if validListing() && request.resource.data.createdAt == request.time && request.resource.data.status == 'active';
+   allow update: if validListing() && resource.data.ownerUid == request.auth.uid
       && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
    allow delete: if request.auth != null && resource.data.ownerUid == request.auth.uid;
   }
